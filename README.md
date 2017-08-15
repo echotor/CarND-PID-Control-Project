@@ -1,6 +1,28 @@
 # CarND-Controls-PID
 Self-Driving Car Engineer Nanodegree Program
 
+# Project Reflection
+## Effect of the P, I, D components
+The proportional parameter Kp determines how hard to steer back to the center depending on the cross-track error (CTE).
+
+The integral parameter Ki helps dealing with bias, i.e. drift.
+
+The derivative parameter Kd determines how strong the oscillation around the center is.
+
+## Final chosen hyperparameters
+I start the project from the program of Twiddle. But the all parameters of Kp, Ki, Kd are chosen one by one. So I start the state of Kp is 0.2, Ki is 0 and Kd is 0.
+
+Firstly, I change the value of Kp until the result is oscillation between left and right in y-direction. Then I change the value of Kd and Ki.
+
+I initially started with big adjustments (up to an order of magnitude), and then made the changes smaller and smaller as I went (kind of how Twiddle works).
+
+For fine tuning, I especially tried to use my understanding of what "part" of the steering each parameter influences to decide which parameter to tune, and in what direction.
+
+The final parameters chosen are:
+
+Kp = 0.2;
+Ki = 0.0004;
+Kd = 3;
 ---
 
 ## Dependencies
@@ -19,7 +41,7 @@ Self-Driving Car Engineer Nanodegree Program
   * Run either `./install-mac.sh` or `./install-ubuntu.sh`.
   * If you install from source, checkout to commit `e94b6e1`, i.e.
     ```
-    git clone https://github.com/uWebSockets/uWebSockets 
+    git clone https://github.com/uWebSockets/uWebSockets
     cd uWebSockets
     git checkout e94b6e1
     ```
@@ -33,7 +55,7 @@ There's an experimental patch for windows in this [PR](https://github.com/udacit
 1. Clone this repo.
 2. Make a build directory: `mkdir build && cd build`
 3. Compile: `cmake .. && make`
-4. Run it: `./pid`. 
+4. Run it: `./pid`.
 
 ## Editor Settings
 
